@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.ttk as ttk
 
 root = Tk()
 root.title('paint')
@@ -21,6 +22,9 @@ def paint(e):
     canvas.create_line(x1, y1, x2, y2, fill=brush_color, width=brush_width, capstyle=brush_type, smooth=True)
 
 
+def change_brush_slider():
+    pass
+
 
 w = 600
 h = 400
@@ -33,5 +37,11 @@ canvas.bind('<B1-Motion>', paint) # left click mouse
 brush_option_frame = Frame(root)
 brush_option_frame.pack(pady=20)
 
+#Brush size
+brush_size_frame = LabelFrame(brush_option_frame, text='Brush Size')
+brush_size_frame.grid(row=0, column=0, padx=50)
+#Brush slider
+my_slider = ttk.Scale(brush_size_frame, from_=1, to=100, command=change_brush_slider, orient=VERTICAL, value=20)
+my_slider.pack(padx=10, pady=10)
 
 root.mainloop()
